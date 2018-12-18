@@ -26,7 +26,7 @@ python scrape.py
 ```
 python scrape.py <Required Category Here>
 ```
-For example, for information about all organizations of the category Operating Systems, do:
+For example, for information about all organizations of the category 'Operating Systems', do:
 ```
 python scrape.py Operating Systems
 ```
