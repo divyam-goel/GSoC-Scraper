@@ -1,10 +1,19 @@
+import sys
 from bs4 import BeautifulSoup
 import requests
 from openpyxl import Workbook
 from openpyxl.styles import Alignment, Font
 
 wb = Workbook()
-ws = wb.create_sheet(title="Organizations")
+
+if len(sys.argv)>1:
+	category = '_'.join(sys.argv[1:])
+	ws = wb.create_sheet(title=category)
+	url = "https://summerofcode.withgoogle.com/archive/2018/organizations/?category="+category
+
+else:
+	ws = wb.create_sheet(title="Organizations")
+	url = "https://summerofcode.withgoogle.com/archive/2018/organizations/"
 
 font_name = Font(size=13)
 
@@ -29,7 +38,6 @@ ws.row_dimensions[1].font = Font(size=16, bold=True)
 ws.row_dimensions[1].alignment = Alignment(
     vertical="center", horizontal="center", shrink_to_fit=True)
 
-url = "https://summerofcode.withgoogle.com/archive/2018/organizations/"
 response = requests.get(url)
 html = response.content
 
@@ -38,8 +46,7 @@ orgs = soup.findAll('li', attrs={'class': 'organization-card__container'})
 
 default = "https://summerofcode.withgoogle.com"
 for index, org in enumerate(orgs):
-    if index == 10:
-        break
+    
     name = org['aria-label']
     link = org.find('a', attrs={'class': 'organization-card__link'})
     link = default + link['href']
@@ -85,6 +92,6 @@ for index, org in enumerate(orgs):
 
     ws.row_dimensions[index + 2].height = 55
 
-wb.save(filename="GSoC-Organizations-test.xlsx")
+wb.save(filename="GSoC-Organizations.xlsx")
 
 # Test
