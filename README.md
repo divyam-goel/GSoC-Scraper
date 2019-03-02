@@ -1,5 +1,5 @@
 # GSoC-Scraper
-#### This program scrapes all the important information about organizations from the GSoC website.
+#### This program scrapes all the important information about past years' organizations from the archive of GSoC website.
 
 ### Information Retrieved:
 1. Organization Name
