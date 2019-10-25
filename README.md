@@ -3,7 +3,7 @@
 
 ### Information Retrieved:
 1. Organization Name
-2. Oraganization Tagline
+2. Organization Tagline
 3. Technologies/Topics
 4. Total Projects in the Year
 5. Link to Organization GSoC Page
